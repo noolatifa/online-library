@@ -1,0 +1,69 @@
+package operations;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import connexion_DB.ConnexionDB;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+
+//@WebServlet("/AuthentificationServlet")
+public class AuthentificationServlet extends HttpServlet {
+    private static final long serialVersionUID = 1L;
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        PrintWriter out = response.getWriter();
+
+        // Récupération des paramètres du formulaire
+        String email = request.getParameter("email");
+        String motDePasse = request.getParameter("motDePasse");
+
+        Connection connexion = null;
+        try {
+            // Obtenir une connexion à la base de données
+            connexion = ConnexionDB.obtenirConnexion();
+
+            // Requête SQL pour vérifier l'authentification
+            String requete = "SELECT * FROM Utilisateurs WHERE email = ? AND mot_de_passe = ?";
+
+            try (PreparedStatement preparedStatement = connexion.prepareStatement(requete)) {
+                preparedStatement.setString(1, email);
+                preparedStatement.setString(2, motDePasse);
+
+                try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                    if (resultSet.next()) {
+                        // L'authentification est réussie
+                        // Ajoutez le code pour rediriger l'utilisateur vers une page sécurisée ou effectuer d'autres actions nécessaires.
+                        // Création de la session
+                        HttpSession session = request.getSession(true);
+                        session.setAttribute("email", email);
+
+                        // Redirection vers la page d'accueil (ou une autre page autorisée)
+                        response.sendRedirect("accueil.jsp");
+                    } else {
+                        // Échec de l'authentification
+                        // Ajoutez le code pour gérer l'échec de l'authentification, par exemple, afficher un message d'erreur.
+                        response.sendRedirect("authentification.jsp?erreur=1");
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace(); // Gérez l'exception de manière appropriée dans votre application
+        } finally {
+            // Fermer la connexion à la base de données
+            ConnexionDB.fermerConnexion();
+        }
+
+        out.close();
+    }
+}

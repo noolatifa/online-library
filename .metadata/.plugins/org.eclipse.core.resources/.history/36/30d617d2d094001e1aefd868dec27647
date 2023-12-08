@@ -1,0 +1,104 @@
+package operations;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import connexion_DB.ConnexionDB;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+
+//@WebServlet("/AuthentificationServlet")
+public class AuthentificationServlet extends HttpServlet {
+    private static final long serialVersionUID = 1L;
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        PrintWriter out = response.getWriter();
+
+        // Récupération des paramètres du formulaire
+        String email = request.getParameter("email");
+        String motDePasse = request.getParameter("motDePasse");
+        out.println("<html><body><h3>Email: " + email + "</h3></body></html>");
+        out.println("<html><body><h3>Mot de passe: " + motDePasse + "</h3></body></html>");
+
+     // ...
+        
+        
+
+     // ...
+
+        Connection connexion = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+
+        try {
+            connexion = ConnexionDB.obtenirConnexion();
+
+            if (connexion != null) {
+                out.println("connexion not null");
+
+                String requete = "SELECT * FROM Utilisateurs WHERE email = ? AND mot_de_passe = ?";
+                preparedStatement = connexion.prepareStatement(requete);
+
+                // Paramètres de la requête
+                preparedStatement.setString(1, email);
+                preparedStatement.setString(2, motDePasse);
+
+                resultSet = preparedStatement.executeQuery();
+
+                if (resultSet.next()) {
+                    // Ajoutez le code pour rediriger l'utilisateur vers une page sécurisée ou effectuer d'autres actions nécessaires.
+                    // Création de la session
+                   while(resultSet.next()) {
+                       out.println(resultSet.getString("email"));
+
+                   }
+
+                    // Redirection vers la page d'accueil (ou une autre page autorisée)
+                    //response.sendRedirect("accueil.jsp");
+                } else {
+                    // Échec de l'authentification
+                    out.println("<html><body><h2>Échec de l'authentification. Veuillez vérifier votre email et mot de passe.</h2></body></html>");
+                    response.sendRedirect("authentification.jsp?erreur=1");
+                }
+            } else {
+                // La connexion à la base de données a échoué
+                out.println("<html><body><h2>Connexion à la base de données a échoué111111111111!</h2></body></html>");
+            }
+        } catch (SQLException e) {
+            // Gérer l'exception de manière appropriée dans votre application
+            e.printStackTrace();
+            out.println("<html><body><h2>Erreur lors de la connexion à la base de données!</h2></body></html>");
+        } finally {
+            // Fermer les ressources
+            try {
+                if (resultSet != null) {
+                    resultSet.close();
+                }
+                if (preparedStatement != null) {
+                    preparedStatement.close();
+                }
+                if (connexion != null) {
+                    connexion.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+  
+
+
+
+        out.close();
+    }
+}

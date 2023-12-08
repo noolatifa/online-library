@@ -1,0 +1,33 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="jakarta.servlet.http.*" %>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Accueil</title>
+</head>
+<body>
+
+<%
+    // Récupérer la session existante
+    HttpSession sessionex = request.getSession(false);
+
+    if (sessionex != null && sessionex.getAttribute("email") != null) {
+        String userEmail = (String) session.getAttribute("email");
+%>
+
+    <h1>Bienvenue <%= userEmail %> !</h1>
+
+<%
+    } else {
+%>
+
+    <h1>Bienvenue Invité !</h1>
+
+<%
+    }
+%>
+
+</body>
+</html>

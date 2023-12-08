@@ -1,0 +1,5 @@
+2023-12-05 21:59:54,832 [Worker-6: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
+2023-12-06 19:34:40,959 [Worker-164: Downloading sources for servlet-api.jar] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/tomcat/tomcat-servlet-api/10.1.1/tomcat-servlet-api-10.1.1-sources.jar
+2023-12-06 19:34:41,504 [Worker-164: Downloading sources for servlet-api.jar] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/tomcat/tomcat-servlet-api/10.1.1/tomcat-servlet-api-10.1.1-sources.jar
+2023-12-06 21:03:43,370 [Worker-217: http://download.eclipse.org/usssdk/drops/nightly/N20231120-044215/compositeArtifacts.xml] INFO  o.a.h.c.h.i.c.HttpRequestRetryExec - Recoverable I/O exception (java.net.SocketException) caught when processing request to {s}->https://download.eclipse.org:443
+2023-12-06 21:04:21,947 [Worker-1: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.

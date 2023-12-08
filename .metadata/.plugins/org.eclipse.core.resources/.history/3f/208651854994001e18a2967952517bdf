@@ -1,0 +1,5 @@
+package bib.models;
+
+public class Emprunt {
+
+}

@@ -1,0 +1,25 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Bibliothèque</title>
+</head>
+<body>
+    <h2>Ajout de Livre</h2>
+    <form action="AjoutLivreServlet" method="post">
+        Titre: <input type="text" name="titre" required><br>
+        Auteur: <input type="text" name="auteur" required><br>
+        Genre: <input type="text" name="genre" required><br>
+        Exemplaires disponibles: <input type="number" name="exemplaires" required><br>
+        <input type="submit" value="Ajouter Livre">
+    </form>
+
+    <h2>Recherche de Livre</h2>
+    <form action="RechercheLivreServlet" method="post">
+        Critère de recherche: <input type="text" name="critere" required><br>
+        <input type="submit" value="Rechercher Livre">
+    </form>
+</body>
+</html>
