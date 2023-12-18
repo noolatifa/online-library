@@ -59,4 +59,34 @@
     <servlet-name>EmpruntServlet</servlet-name>
     <url-pattern>/EmpruntServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SignUpServlet</display-name>
+    <servlet-name>SignUpServlet</servlet-name>
+    <servlet-class>operations.SignUpServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SignUpServlet</servlet-name>
+    <url-pattern>/SignUpServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ListerHistoriqueServlet</display-name>
+    <servlet-name>ListerHistoriqueServlet</servlet-name>
+    <servlet-class>ListerHistoriqueServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ListerHistoriqueServlet</servlet-name>
+    <url-pattern>/ListerHistoriqueServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>LogoutServlet</display-name>
+    <servlet-name>LogoutServlet</servlet-name>
+    <servlet-class>operations.LogoutServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LogoutServlet</servlet-name>
+    <url-pattern>/LogoutServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

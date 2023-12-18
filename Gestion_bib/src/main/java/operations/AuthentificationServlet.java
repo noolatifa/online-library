@@ -1,12 +1,10 @@
 package operations;
-
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
 import connexion_DB.ConnexionDB;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -15,10 +13,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
-//@WebServlet("/AuthentificationServlet")
 public class AuthentificationServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
-
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -35,12 +31,12 @@ public class AuthentificationServlet extends HttpServlet {
             connexion = ConnexionDB.obtenirConnexion();
 
             if (connexion != null) {
-                // vérifier si l user est déjà authentifié
+                
                 HttpSession session = request.getSession();
 
                 if (session != null && session.getAttribute("email") != null) {
-                    // si user est dejàà authetifié --> redirect page d'accueil
-                    response.sendRedirect("accueil.jsp");
+                   
+                    response.sendRedirect("bibliotheque.jsp");
                     return;
                 }
 
@@ -52,19 +48,15 @@ public class AuthentificationServlet extends HttpServlet {
                 resultSet = preparedStatement.executeQuery();
 
                 if (resultSet.next()) {
-                    // L'authentification done
-                    // invalidation de la session existante 
+                  
                     session.invalidate();
 
-                    // création d'une nouvelle session
                     session = request.getSession(true);
                     session.setAttribute("email", email);
-
-                    // redirection vers la page d'accueil
-                    response.sendRedirect("accueil.jsp");
+              
+                    response.sendRedirect("bibliotheque.jsp");
                 } else {
-                    // echec de l'authentification
-                   // ConnexionDB.fermerConnexion();
+                   
                     request.setAttribute("errorMessage", "Échec de l'authentification. Veuillez vérifier votre email et mot de passe.");
                     request.getRequestDispatcher("authentification.jsp").forward(request, response);
                     

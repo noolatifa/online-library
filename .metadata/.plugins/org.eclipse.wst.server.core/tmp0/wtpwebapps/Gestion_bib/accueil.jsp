@@ -6,6 +6,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Accueil</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap">
+    
 </head>
 <body>
 
@@ -18,9 +20,7 @@
 %>
 
     <h1>Bienvenue <%= userEmail %> !</h1>
-     <form action="bibliotheque.jsp" method="get">
-        <button type="submit">Accéder à la bibliothèque</button>
-    </form>
+    
 
 <%
     } else {

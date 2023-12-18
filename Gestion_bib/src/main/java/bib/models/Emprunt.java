@@ -8,6 +8,7 @@ public class Emprunt {
 	    private Date dateEmprunt;
 	    private Date dateRetour;
 	    private String statut;
+	    private String titreLivre; 
 
 	    // Getters
 	    public int getIdEmprunt() {
@@ -57,5 +58,8 @@ public class Emprunt {
 
 	    public void setStatut(String statut) {
 	        this.statut = statut;
+	    }
+	    public void setTitreLivre(String titreLivre) {
+	        this.titreLivre = titreLivre;
 	    }
 }

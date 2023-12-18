@@ -1,68 +1,67 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>Gestion d'une Bibliothèque</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap">
-
+    <meta charset="UTF-8">
+    <title>inscription Page</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap">
+    
 </head>
 <body>
-
 	<div class="main">
 
-		<!-- Sing in  Form -->
-		<section class="sign-in">
+		<section class="signup">
 			<div class="container">
-				<div class="signin-content">
-					<div class="signin-image">
-						<figure>
-    <img src="${pageContext.request.contextPath}/img/signin-image.jpg" alt="Sign up image">
-</figure>
-
-						<a href="signup.jsp" class="signup-image-link">Créer un compte</a>
-					</div>
-
-					<div class="signin-form">
-						<h2 class="form-title">Connectez-vous</h2>
-                        <% String errorMessage = (String) request.getAttribute("errorMessage"); %>
-                        <% if (errorMessage != null && !errorMessage.isEmpty()) { %>
-                            <p style="color: red;"><%= errorMessage %></p>
-                        <% } %>
-						<form method="post" action="AuthentificationServlet" class="register-form"
-							id="login-form">
+				<div class="signup-content">
+					<div class="signup-form">
+						<h2 class="form-title">S'inscrire</h2>
+						
+						<form action="SignUpServlet" method="post" class="register-form"
+						id="register-form">
+						
 							<div class="form-group">
-								<label for="email"><i
-									class="zmdi zmdi-account material-icons-name"></i></label> <input
-									type="text" name="email" id="email"
-									placeholder="Adresse email" />
+								<label for="nom"></label> 
+								<input type="text" id="nom" name="nom" placeholder="Nom:" required>
+						
 							</div>
 							<div class="form-group">
-								<label for="password"><i class="zmdi zmdi-lock"></i></label> <input
-									type="password" name="motDePasse" id="motDePasse"
-									placeholder="Mot de passe" />
+								<label for="prenom"></label>
+       					 <input type="text" id="prenom" name="prenom"  placeholder="Prenom:" required>
 							</div>
-							
+							<div class="form-group">
+								<label for="email"></label>
+      							 <input type="email" id="email" name="email"  placeholder="Email:" required>
+
+							</div>
+							<div class="form-group">
+								<label for="motDePasse"></label>
+     							   <input type="password" id="motDePasse" name="motDePasse"  placeholder="Mot de Passe:" required>
+							</div>
 							<div class="form-group form-button">
-								<input type="submit" name="signin" id="signin"
-									class="form-submit" value="Se Connecter" />
+								<button type="submit" name="signin" id="signin"
+									class="form-submit"  type="submit">S'inscrire</button>
 							</div>
-							
 						</form>
+					</div>
+					<div class="signup-image">
+						<figure>
+   							 <img src="${pageContext.request.contextPath}/img/signup-image.jpg" alt="Sign up image">
+						</figure>
 						
 					</div>
 				</div>
 			</div>
 		</section>
 
+
 	</div>
 
 
-</body>
 
+</body>
 </html>
+
+
 <style>
 
 display-flex, .display-flex, .display-flex-center, .signup-content, .signin-content, .social-login, .socials {
@@ -138,7 +137,7 @@ h2 {
   font-weight: bold;
   color: #222;
   font-family: Poppins;
-  font-size: 35px; }
+  font-size: 36px; }
 
 .main {
   background: #f8f8f8;
@@ -223,8 +222,7 @@ body {
   margin: 0 55px; }
 
 .form-title {
-  margin-bottom: 33px;
-   }
+  margin-bottom: 33px; }
 
 .signup-image {
   margin-top: 45px; }
@@ -351,6 +349,7 @@ input[type=checkbox]:not(old):checked + label > span:before {
   font-size: 11px;
   line-height: 1.2;
   text-align: center;
+  font-family: 'Material-Design-Iconic-Font';
   font-weight: bold; }
 
 .agree-term {
@@ -389,6 +388,7 @@ label.valid {
   height: 20px;
   background: transparent; }
   label.valid:after {
+    font-family: 'Material-Design-Iconic-Font';
     content: '\f269';
     width: 100%;
     height: 100%;
@@ -486,10 +486,10 @@ label.valid {
 
   .form-title {
     text-align: center; } }
-
-
-  * {
+     * {
             font-family: 'Poppins', sans-serif;
             /* Add other styles as needed */
         }
+    
+    
 </style>

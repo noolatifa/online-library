@@ -1,5 +1,7 @@
 INDEX VERSION 1.131
 C:\Users\latif\Desktop\Projet_JEE\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1926318957.index
 \Gestion_bib\src\main\java
+C:\Users\latif\Desktop\Projet_JEE\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2008797537.index
+\Gestion_bib\src\main\java
 C:\Users\latif\Desktop\Projet_JEE\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\665892787.index
 \Gestion_BIB\src\main\java
